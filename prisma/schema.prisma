@@ -7,14 +7,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model BlogPost {
-  id        Int      @id @default(autoincrement())
-  title     String
-  slug      String   @unique
-  content   String
-  excerpt   String
-  createdAt DateTime @default(now())
-}
 
 model CvRequest {
   id        String   @id @default(cuid())
