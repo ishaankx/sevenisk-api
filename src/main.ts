@@ -3,9 +3,18 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // --- THIS IS THE FIX ---
+  // We provide an array of allowed origins
   app.enableCors({
-    origin: process.env.FRONTEND_ORIGIN || 'https://www.sevenisk.com/',
+    origin: [
+      'https://sevenisk-frontend.vercel.app', // Your new Vercel deploy URL
+      'https://www.sevenisk.com', // Your final custom domain
+      'http://localhost:3001', // For your local testing
+    ],
   });
-  await app.listen(process.env.PORT || 3000);
+  // --- END OF FIX ---
+
+  await app.listen(3000);
 }
 bootstrap();
