@@ -15,3 +15,10 @@ model BlogPost {
   excerpt   String
   createdAt DateTime @default(now())
 }
+
+model CvRequest {
+  id        String   @id @default(cuid())
+  email     String
+  name      String
+  createdAt DateTime @default(now())
+}
